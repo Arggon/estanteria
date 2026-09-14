@@ -1,6 +1,6 @@
 ---
 type: story
-status: in_progress
+status: done
 id: story-backup-rotation
 title: Rotación y retención de backups
 assignee: Arggon
@@ -9,7 +9,6 @@ parent: epic-estanteria-ops
 labels: []
 created: "2026-09-14"
 updated: "2026-09-14"
-claimed_at: "2026-09-14T13:43:11.382Z"
 depends_on: [story-ledger-backup]
 worktree_path: /home/arggon/Projects/estanteria-story-backup-rotation
 ---
@@ -26,9 +25,9 @@ worktree_path: /home/arggon/Projects/estanteria-story-backup-rotation
 
 ## Acceptance
 
-- [ ] estanteria backup --keep N poda los backups más viejos (retención)
-- [ ] la poda nunca toca el ledger principal ni el backup más reciente
-- [ ] tests table-driven de la rotación; runbook actualizado
-- [ ] cierra el alcance del issue #5 (rotación); task-issue-5 comentado
+- [x] estanteria backup --keep N poda los backups más viejos (retención)
+- [x] la poda nunca toca el ledger principal ni el backup más reciente
+- [x] tests table-driven de la rotación; runbook actualizado
+- [x] cierra el alcance del issue #5 (rotación); task-issue-5 comentado
 
 ## Notes
