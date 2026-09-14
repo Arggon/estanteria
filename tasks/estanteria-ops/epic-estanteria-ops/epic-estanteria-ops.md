@@ -1,6 +1,6 @@
 ---
 type: epic
-status: in_progress
+status: done
 id: epic-estanteria-ops
 title: "Ops: resiliencia del ledger"
 parent: estanteria-ops
