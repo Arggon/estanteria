@@ -24,3 +24,6 @@ Comando `estanteria stats` que resuma la actividad de lectura:
 - [ ] libros sin `pages` o sin `finished` no rompen el cálculo
 - [ ] tests table-driven del cálculo
 > imported from issue #1
+
+### 2026-09-14 @Arggon
+Implementado y mergeado en PR #8 (story-reading-stats). Spec+plan: spec-reading-stats-001.
