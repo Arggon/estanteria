@@ -1,0 +1,26 @@
+---
+type: story
+status: todo
+id: story-pages-deploy
+title: Deploy de la vista a GitHub Pages
+parent: epic-estanteria-app
+labels: []
+created: "2026-09-14"
+updated: "2026-09-14"
+---
+<!--
+  Placement (v0): tasks/estanteria-app/epic-estanteria-app/story-pages-deploy/story-pages-deploy.md (story index; required).
+  parent MUST be the epic id. Optional style prefixes (e.g. story-) are not type discriminators.
+-->
+
+# Deploy de la vista a GitHub Pages
+
+## Context
+
+<!-- Why this story exists. -->
+
+## Acceptance
+
+- [ ] 
+
+## Notes
