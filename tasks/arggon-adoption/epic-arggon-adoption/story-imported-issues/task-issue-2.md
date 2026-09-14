@@ -1,6 +1,6 @@
 ---
 type: task
-status: in_progress
+status: done
 id: task-issue-2
 title: "issue #2: Búsqueda por título/autor"
 assignee: Arggon
@@ -8,7 +8,6 @@ parent: story-imported-issues
 labels: [enhancement]
 created: "2026-09-14"
 updated: "2026-09-14"
-claimed_at: "2026-09-14T13:42:21.941Z"
 issue: 2
 ---
 ## Propuesta
