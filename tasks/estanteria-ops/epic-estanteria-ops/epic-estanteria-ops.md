@@ -1,6 +1,6 @@
 ---
 type: epic
-status: todo
+status: in_progress
 id: epic-estanteria-ops
 title: "Ops: resiliencia del ledger"
 parent: estanteria-ops
@@ -21,6 +21,6 @@ updated: "2026-09-14"
 
 ## Acceptance
 
-- [ ] 
+- [x] Las 2 stories del frente ops están done (backup fechado + rotación) con PRs mergeados.
 
 ## Notes
