@@ -1,6 +1,6 @@
 ---
 type: initiative
-status: todo
+status: done
 id: arggon-adoption
 title: ArggonManager adoption
 labels: []
@@ -20,6 +20,6 @@ updated: "2026-09-14"
 
 ## Acceptance
 
-- [ ] 
+- [x] ArggonManager adoptado: jerarquía creada por adopt (fix #137), docs gobernantes completados y ackeados, playbooks go+golangci-lint vigentes, validate ok.
 
 ## Notes
