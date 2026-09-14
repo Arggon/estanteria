@@ -4,6 +4,15 @@ Tracker de lectura personal. Un ledger JSON plano + un CLI mínimo en Go, sin
 dependencias: tu estantería te tiene que sobrevivir a las modas de bases de
 datos.
 
+## Demo online (GitHub Pages)
+
+Cada push a `main` dispara [`.github/workflows/pages.yml`](.github/workflows/pages.yml):
+compila el binario, renderiza el ledger de ejemplo
+[`examples/ledger.json`](examples/ledger.json) con `estanteria render --out
+index.html` y lo publica en GitHub Pages. El resultado es un sitio estático
+100% de solo lectura (mismo generador que `serve`, ADR 0004) — una demo, no
+tu ledger personal.
+
 ## Stack
 
 - **Go 1.27.1** (estable al 2026-09-14; 1.27 salió el 19/8/2026 y 1.27.1 el 1/9/2026)

@@ -63,6 +63,7 @@ Uso:
   estanteria search <consulta>
   estanteria stats
   estanteria serve [--addr 127.0.0.1:8080]
+  estanteria render --out RUTA [--file RUTA]
   estanteria backup [--dir RUTA]
 
 El libro se busca por id exacto o por prefijo de título (sin distinguir
@@ -95,6 +96,8 @@ func run(args []string) int {
 		err = cmdStats(rest)
 	case "serve":
 		err = cmdServe(rest)
+	case "render":
+		err = cmdRender(rest)
 	case "backup":
 		err = cmdBackup(rest)
 	default:
@@ -105,6 +108,74 @@ func run(args []string) int {
 		return 1
 	}
 	return 0
+}
+
+// cmdRender writes the static snapshot of the shelf (ADR 0004): the same
+// RenderHTML generator that serve uses per-request, dumped to --out as a
+// self-contained HTML file for GitHub Pages. It is a pure read of the ledger:
+// the source file is never mutated. The write is atomic (temp + rename) with
+// 0644 permissions — the output is public content, unlike the ledger.
+func cmdRender(args []string) error {
+	fs := flag.NewFlagSet("render", flag.ContinueOnError)
+	out := fs.String("out", "", "archivo HTML de salida (requerido)")
+	file := fs.String("file", "", "ledger de entrada (default: ESTANTERIA_FILE o ~/.estanteria.json)")
+	if partitionArgs(fs, args) != nil {
+		return fmt.Errorf("flags inválidas (mirá estanteria --help)")
+	}
+	if *out == "" {
+		return fmt.Errorf("uso: estanteria render --out RUTA [--file RUTA]")
+	}
+	path := *file
+	if path == "" {
+		var err error
+		if path, err = LedgerPath(); err != nil {
+			return err
+		}
+	}
+	shelf, err := LoadShelf(path)
+	if err != nil {
+		return err
+	}
+	if err := os.MkdirAll(filepath.Dir(*out), 0o755); err != nil {
+		return fmt.Errorf("creando directorio de salida: %w", err)
+	}
+	html := RenderHTML(shelf.Books, time.Now())
+	if err := writeFileAtomic(*out, html, 0o644); err != nil {
+		return err
+	}
+	fmt.Println(*out)
+	return nil
+}
+
+// writeFileAtomic writes data to path via a temp file in the same directory
+// plus rename, so readers never see a partial file. Residual temp files are
+// removed on failure.
+func writeFileAtomic(path string, data []byte, perm os.FileMode) error {
+	dir := filepath.Dir(path)
+	f, err := os.CreateTemp(dir, ".estanteria-*.tmp")
+	if err != nil {
+		return fmt.Errorf("creando temp: %w", err)
+	}
+	tmp := f.Name()
+	defer os.Remove(tmp) // no-op after a successful rename
+	if _, err := f.Write(data); err != nil {
+		f.Close()
+		return fmt.Errorf("escribiendo temp: %w", err)
+	}
+	if err := f.Sync(); err != nil {
+		f.Close()
+		return fmt.Errorf("fsync temp: %w", err)
+	}
+	if err := f.Close(); err != nil {
+		return fmt.Errorf("cerrando temp: %w", err)
+	}
+	if err := os.Chmod(tmp, perm); err != nil {
+		return fmt.Errorf("chmod temp: %w", err)
+	}
+	if err := os.Rename(tmp, path); err != nil {
+		return fmt.Errorf("renombrando sobre %s: %w", path, err)
+	}
+	return nil
 }
 
 // cmdServe arranca la vista web de SOLO LECTURA (ADR 0003): bindea a

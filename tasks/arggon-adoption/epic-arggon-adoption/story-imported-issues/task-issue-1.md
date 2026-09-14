@@ -1,8 +1,9 @@
 ---
 type: task
-status: todo
+status: done
 id: task-issue-1
 title: "issue #1: Stats de lectura (páginas/mes, ratings promedio)"
+assignee: Arggon
 parent: story-imported-issues
 labels: [enhancement]
 created: "2026-09-14"
@@ -24,3 +25,6 @@ Comando `estanteria stats` que resuma la actividad de lectura:
 - [ ] libros sin `pages` o sin `finished` no rompen el cálculo
 - [ ] tests table-driven del cálculo
 > imported from issue #1
+
+### 2026-09-14 @Arggon
+Implementado y mergeado en PR #8 (story-reading-stats). Spec+plan: spec-reading-stats-001.

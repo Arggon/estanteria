@@ -1,0 +1,66 @@
+{
+  "books": [
+    {
+      "id": "el-aleph",
+      "title": "El Aleph",
+      "author": "Jorge Luis Borges",
+      "pages": 210,
+      "status": "leido",
+      "rating": 5,
+      "added": "2025-11-03T10:15:00Z",
+      "finished": "2025-11-20T22:30:00Z"
+    },
+    {
+      "id": "rayuela",
+      "title": "Rayuela",
+      "author": "Julio Cortázar",
+      "pages": 640,
+      "status": "leido",
+      "rating": 4,
+      "added": "2025-12-01T09:00:00Z",
+      "finished": "2026-01-15T20:45:00Z"
+    },
+    {
+      "id": "cien-anos-de-soledad",
+      "title": "Cien años de soledad",
+      "author": "Gabriel García Márquez",
+      "pages": 494,
+      "status": "leido",
+      "rating": 5,
+      "added": "2026-02-10T08:30:00Z",
+      "finished": "2026-03-05T23:10:00Z"
+    },
+    {
+      "id": "el-tunel",
+      "title": "El túnel",
+      "author": "Ernesto Sabato",
+      "pages": 176,
+      "status": "leyendo",
+      "added": "2026-04-02T12:00:00Z"
+    },
+    {
+      "id": "ficciones",
+      "title": "Ficciones",
+      "author": "Jorge Luis Borges",
+      "pages": 174,
+      "status": "leyendo",
+      "added": "2026-05-18T19:20:00Z"
+    },
+    {
+      "id": "pedro-paramo",
+      "title": "Pedro Páramo",
+      "author": "Juan Rulfo",
+      "pages": 124,
+      "status": "quiero-leer",
+      "added": "2026-06-21T14:40:00Z"
+    },
+    {
+      "id": "la-casa-de-los-espiritus",
+      "title": "La casa de los espíritus",
+      "author": "Isabel Allende",
+      "pages": 368,
+      "status": "quiero-leer",
+      "added": "2026-07-30T16:05:00Z"
+    }
+  ]
+}

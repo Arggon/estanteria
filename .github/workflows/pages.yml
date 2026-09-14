@@ -1,0 +1,50 @@
+# Publica el render estático de examples/ledger.json en GitHub Pages en cada
+# push a main. Sitio 100% de solo lectura (ADR 0004): sin runtime, un HTML
+# autocontenido generado por `estanteria render`.
+#
+# Versions of the official actions (verified 2026-09-14, latest releases):
+# - actions/checkout v5 (v5.0.0, released 2025-08; requires node24 runners)
+#   https://github.com/actions/checkout/releases
+# - actions/setup-go v6 (v6.0.0, released 2025-08; node24, go-version caching)
+#   https://github.com/actions/setup-go/releases
+# - actions/configure-pages v6 (v6.0.0, released 2026-03-25)
+#   https://github.com/actions/configure-pages/releases
+# - actions/upload-pages-artifact v5 (v5.0.0, released 2026-04-10)
+#   https://github.com/actions/upload-pages-artifact/releases
+# - actions/deploy-pages v5 (v5.0.1, released 2026-09-01)
+#   https://github.com/actions/deploy-pages/releases
+name: pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-go@v6
+        with:
+          go-version: 1.27.1
+      - run: go build -o estanteria .
+      - run: ./estanteria render --out index.html --file examples/ledger.json
+      - uses: actions/configure-pages@v6
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: .
+      - id: deployment
+        uses: actions/deploy-pages@v5

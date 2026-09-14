@@ -1,8 +1,9 @@
 ---
 type: task
-status: todo
+status: done
 id: task-issue-3
 title: "issue #3: Vista web de la estantería (solo lectura, net/http stdlib)"
+assignee: Arggon
 parent: story-imported-issues
 labels: [enhancement]
 created: "2026-09-14"
@@ -20,3 +21,6 @@ issue: 3
 - [ ] bind por defecto a 127.0.0.1 (no exponer a la red)
 - [ ] test del handler con httptest
 > imported from issue #3
+
+### 2026-09-14 @Arggon
+Implementado y mergeado en PR #7 (story-web-view). Generador compartido según ADR 0004; render --out para Pages sigue en story-pages-deploy.
