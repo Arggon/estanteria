@@ -29,10 +29,9 @@ A change is acceptable when it satisfies the bar above and a reviewer can answer
 
 ## Testing expectations
 
-<!-- Project-specific: coverage expectations, what needs integration vs unit tests, fixtures policy. -->
-
-- TODO: unit vs integration split.
-- TODO: what must be covered before merge.
+- Unit (dominio puro `Shelf`/`Book`/storage con `t.TempDir()`) vs e2e (`run(args)` con captura de stdout/stderr y ledger aislado por test).
+- Toda regla nueva de `Book`/`Shelf` entra con tests table-driven antes del merge; los invariantes de `ARCHITECTURE.md` tienen su test correspondiente (ver la sección Invariants).
+- Gates de merge: `go test ./... && go vet ./...` en verde.
 
 ## ADRs
 
