@@ -57,6 +57,7 @@ const usage = `estanteria — tracker de lectura personal
 Uso:
   estanteria add <título> [--autor NOMBRE] [--paginas N]
   estanteria list [--status quiero-leer|leyendo|leido]
+  estanteria search <consulta>
   estanteria status <libro> [--set quiero-leer|leyendo|leido] [--rating 1-5]
   estanteria stats
   estanteria serve [--addr 127.0.0.1:8080]
@@ -84,6 +85,8 @@ func run(args []string) int {
 		err = cmdList(rest)
 	case "status":
 		err = cmdStatus(rest)
+	case "search":
+		err = cmdSearch(rest)
 	case "stats":
 		err = cmdStats(rest)
 	case "serve":
@@ -176,6 +179,37 @@ func cmdList(args []string) error {
 			line += " " + strings.Repeat("★", b.Rating)
 		}
 		fmt.Println(line)
+	}
+	fmt.Printf("total: %d\n", len(books))
+	return nil
+}
+
+// cmdSearch lists every book whose title or author contains the query
+// (case/accent-insensitive). It is a pure read: the ledger is never saved.
+func cmdSearch(args []string) error {
+	if len(args) != 1 {
+		return fmt.Errorf("uso: estanteria search <consulta>")
+	}
+	path, err := LedgerPath()
+	if err != nil {
+		return err
+	}
+	shelf, err := LoadShelf(path)
+	if err != nil {
+		return err
+	}
+	books := shelf.Search(args[0])
+	if len(books) == 0 {
+		fmt.Printf("(sin resultados para %q)\n", args[0])
+	} else {
+		for _, b := range books {
+			line := fmt.Sprintf("%-14s %s %s %s",
+				b.ID, padRight(trunc(b.Title, 40), 40), padRight(trunc(b.Author, 20), 20), b.Status.Display())
+			if b.Rating != 0 {
+				line += " " + strings.Repeat("★", b.Rating)
+			}
+			fmt.Println(line)
+		}
 	}
 	fmt.Printf("total: %d\n", len(books))
 	return nil
