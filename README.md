@@ -26,6 +26,7 @@ estanteria status "el al" --set leyendo
 estanteria status "el aleph" --set leido --rating 5
 estanteria list                    # toda la estantería
 estanteria list --status leido     # solo terminados (con sus ratings)
+estanteria stats                   # totales, rating promedio y páginas/mes (solo lectura)
 ```
 
 El libro se busca por id exacto o por prefijo de título, sin distinguir
