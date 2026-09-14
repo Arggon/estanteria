@@ -112,6 +112,27 @@ func (s *Shelf) Find(query string) (*Book, error) {
 	return nil, fmt.Errorf("no se encontró ningún libro para %q", query)
 }
 
+// Search returns every book whose title or author contains the query,
+// case/accent-insensitive (same folding as Find), sorted by title for
+// stable output. An empty or whitespace-only query yields no results.
+// It is a pure read: the shelf is never mutated.
+func (s *Shelf) Search(query string) []Book {
+	q := foldAccents(strings.ToLower(strings.TrimSpace(query)))
+	out := make([]Book, 0)
+	if q == "" {
+		return out
+	}
+	for _, b := range s.Books {
+		title := foldAccents(strings.ToLower(b.Title))
+		author := foldAccents(strings.ToLower(b.Author))
+		if strings.Contains(title, q) || strings.Contains(author, q) {
+			out = append(out, b)
+		}
+	}
+	sort.Slice(out, func(i, j int) bool { return out[i].Title < out[j].Title })
+	return out
+}
+
 // Filter returns the books matching a status (nil Status = all),
 // sorted by title for stable output.
 func (s *Shelf) Filter(status Status) []Book {
