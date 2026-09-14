@@ -1,0 +1,208 @@
+{
+ "ok": true,
+ "schemaVersion": 1,
+ "conventionVersion": 3,
+ "command": "report",
+ "groups": [
+  {
+   "epic": {
+    "id": "epic-arggon-adoption",
+    "title": "ArggonManager adoption"
+   },
+   "initiative": {
+    "id": "arggon-adoption",
+    "title": "ArggonManager adoption"
+   },
+   "containers": [
+    {
+     "id": "story-arggon-adoption",
+     "title": "ArggonManager adoption",
+     "type": "story",
+     "counts": {
+      "todo": 0,
+      "in_progress": 0,
+      "blocked": 0,
+      "done": 1,
+      "cancelled": 0,
+      "total": 1
+     },
+     "empty": false
+    },
+    {
+     "id": "story-imported-issues",
+     "title": "Imported GitHub issues",
+     "type": "story",
+     "counts": {
+      "todo": 0,
+      "in_progress": 0,
+      "blocked": 0,
+      "done": 7,
+      "cancelled": 0,
+      "total": 7
+     },
+     "empty": false
+    }
+   ],
+   "totals": {
+    "todo": 0,
+    "in_progress": 0,
+    "blocked": 0,
+    "done": 8,
+    "cancelled": 0,
+    "total": 8
+   },
+   "empty": false
+  },
+  {
+   "epic": {
+    "id": "epic-estanteria-app",
+    "title": "App: features de lectura"
+   },
+   "initiative": {
+    "id": "estanteria-app",
+    "title": "Frente app: stats, búsqueda, web view, deploy Pages"
+   },
+   "containers": [
+    {
+     "id": "story-issue-search",
+     "title": "Búsqueda por título/autor",
+     "type": "story",
+     "counts": {
+      "todo": 0,
+      "in_progress": 0,
+      "blocked": 0,
+      "done": 0,
+      "cancelled": 0,
+      "total": 0
+     },
+     "empty": true
+    },
+    {
+     "id": "story-pages-deploy",
+     "title": "Deploy de la vista a GitHub Pages",
+     "type": "story",
+     "counts": {
+      "todo": 0,
+      "in_progress": 0,
+      "blocked": 0,
+      "done": 0,
+      "cancelled": 0,
+      "total": 0
+     },
+     "empty": true
+    },
+    {
+     "id": "story-reading-stats",
+     "title": "Stats de lectura: páginas/mes y ratings promedio",
+     "type": "story",
+     "counts": {
+      "todo": 0,
+      "in_progress": 0,
+      "blocked": 0,
+      "done": 0,
+      "cancelled": 0,
+      "total": 0
+     },
+     "empty": true
+    },
+    {
+     "id": "story-web-view",
+     "title": "Vista web de solo lectura (serve)",
+     "type": "story",
+     "counts": {
+      "todo": 0,
+      "in_progress": 0,
+      "blocked": 0,
+      "done": 0,
+      "cancelled": 0,
+      "total": 0
+     },
+     "empty": true
+    }
+   ],
+   "totals": {
+    "todo": 0,
+    "in_progress": 0,
+    "blocked": 0,
+    "done": 0,
+    "cancelled": 0,
+    "total": 0
+   },
+   "empty": false
+  },
+  {
+   "epic": {
+    "id": "epic-estanteria-ops",
+    "title": "Ops: resiliencia del ledger"
+   },
+   "initiative": {
+    "id": "estanteria-ops",
+    "title": "Frente ops: backup del ledger y rotación"
+   },
+   "containers": [
+    {
+     "id": "story-backup-rotation",
+     "title": "Rotación y retención de backups",
+     "type": "story",
+     "counts": {
+      "todo": 0,
+      "in_progress": 0,
+      "blocked": 0,
+      "done": 0,
+      "cancelled": 0,
+      "total": 0
+     },
+     "empty": true
+    },
+    {
+     "id": "story-ledger-backup",
+     "title": "Backup fechado del ledger",
+     "type": "story",
+     "counts": {
+      "todo": 0,
+      "in_progress": 0,
+      "blocked": 0,
+      "done": 0,
+      "cancelled": 0,
+      "total": 0
+     },
+     "empty": true
+    }
+   ],
+   "totals": {
+    "todo": 0,
+    "in_progress": 0,
+    "blocked": 0,
+    "done": 0,
+    "cancelled": 0,
+    "total": 0
+   },
+   "empty": false
+  }
+ ],
+ "trend": {
+  "weeks": [
+   {
+    "week": "2026-W38",
+    "completions": 22
+   }
+  ],
+  "cycleTime": [
+   {
+    "type": "bug",
+    "avgDays": 0,
+    "count": 1
+   },
+   {
+    "type": "story",
+    "avgDays": 0,
+    "count": 7
+   },
+   {
+    "type": "task",
+    "avgDays": 0,
+    "count": 7
+   }
+  ]
+ }
+}

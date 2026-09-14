@@ -1,0 +1,13 @@
+{
+ "jsonrpc": "2.0",
+ "id": 1,
+ "result": {
+  "content": [
+   {
+    "type": "text",
+    "text": "{\"ok\":false,\"schemaVersion\":1,\"conventionVersion\":3,\"command\":\"update\",\"error\":{\"message\":\"agents must not reopen done items (docs/agents.md); ask a human to reopen 'story-web-view'\",\"code\":\"UPDATE_FAILED\"}}"
+   }
+  ],
+  "isError": true
+ }
+}

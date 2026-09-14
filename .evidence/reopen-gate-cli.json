@@ -1,0 +1,1 @@
+{"ok":false,"schemaVersion":1,"conventionVersion":3,"command":"update","error":{"message":"--status todo on a done/cancelled item requires an interactive terminal (agents must not reopen — docs/agents.md)","code":"UPDATE_FAILED"}}
