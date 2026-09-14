@@ -28,7 +28,15 @@ estanteria list                    # toda la estantería
 estanteria list --status leido     # solo terminados (con sus ratings)
 estanteria backup                  # copia fechada en ~/.estanteria-backups/
 estanteria backup --dir /tmp/bk    # copia fechada en otro directorio
+estanteria stats                   # totales, rating promedio y páginas/mes (solo lectura)
+estanteria serve                   # vista web de SOLO LECTURA en http://127.0.0.1:8080
 ```
+
+`serve` levanta una vista HTML agrupada por status (quiero-leer / leyendo /
+leído) con ratings y estadísticas: es **solo lectura** (ningún endpoint muta
+el ledger, métodos que no sean GET responden 405) y bindea a `127.0.0.1` por
+defecto (`--addr` para cambiarlo). La página se genera en cada request desde
+el ledger, así que siempre muestra el estado actual.
 
 El libro se busca por id exacto o por prefijo de título, sin distinguir
 mayúsculas ni acentos. El rating (1-5) solo aplica al terminar un libro.

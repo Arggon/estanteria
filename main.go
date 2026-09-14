@@ -4,8 +4,10 @@ package main
 import (
 	"flag"
 	"fmt"
+	"net/http"
 	"os"
 	"path/filepath"
+	"sort"
 	"strings"
 	"time"
 )
@@ -56,7 +58,11 @@ const usage = `estanteria — tracker de lectura personal
 Uso:
   estanteria add <título> [--autor NOMBRE] [--paginas N]
   estanteria list [--status quiero-leer|leyendo|leido]
+  estanteria search <consulta>
   estanteria status <libro> [--set quiero-leer|leyendo|leido] [--rating 1-5]
+  estanteria search <consulta>
+  estanteria stats
+  estanteria serve [--addr 127.0.0.1:8080]
   estanteria backup [--dir RUTA]
 
 El libro se busca por id exacto o por prefijo de título (sin distinguir
@@ -83,6 +89,12 @@ func run(args []string) int {
 		err = cmdList(rest)
 	case "status":
 		err = cmdStatus(rest)
+	case "search":
+		err = cmdSearch(rest)
+	case "stats":
+		err = cmdStats(rest)
+	case "serve":
+		err = cmdServe(rest)
 	case "backup":
 		err = cmdBackup(rest)
 	default:
@@ -93,6 +105,22 @@ func run(args []string) int {
 		return 1
 	}
 	return 0
+}
+
+// cmdServe arranca la vista web de SOLO LECTURA (ADR 0003): bindea a
+// 127.0.0.1 por defecto y recarga el ledger en cada request vía ServeHandler.
+func cmdServe(args []string) error {
+	fs := flag.NewFlagSet("serve", flag.ContinueOnError)
+	addr := fs.String("addr", "127.0.0.1:8080", "dirección de escucha")
+	if partitionArgs(fs, args) != nil {
+		return fmt.Errorf("flags inválidas (mirá estanteria --help)")
+	}
+	path, err := LedgerPath()
+	if err != nil {
+		return err
+	}
+	fmt.Printf("estantería en http://%s (solo lectura, ledger: %s)\n", *addr, path)
+	return http.ListenAndServe(*addr, ServeHandler(path))
 }
 
 func cmdAdd(args []string) error {
@@ -157,6 +185,37 @@ func cmdList(args []string) error {
 			line += " " + strings.Repeat("★", b.Rating)
 		}
 		fmt.Println(line)
+	}
+	fmt.Printf("total: %d\n", len(books))
+	return nil
+}
+
+// cmdSearch lists every book whose title or author contains the query
+// (case/accent-insensitive). It is a pure read: the ledger is never saved.
+func cmdSearch(args []string) error {
+	if len(args) != 1 {
+		return fmt.Errorf("uso: estanteria search <consulta>")
+	}
+	path, err := LedgerPath()
+	if err != nil {
+		return err
+	}
+	shelf, err := LoadShelf(path)
+	if err != nil {
+		return err
+	}
+	books := shelf.Search(args[0])
+	if len(books) == 0 {
+		fmt.Printf("(sin resultados para %q)\n", args[0])
+	} else {
+		for _, b := range books {
+			line := fmt.Sprintf("%-14s %s %s %s",
+				b.ID, padRight(trunc(b.Title, 40), 40), padRight(trunc(b.Author, 20), 20), b.Status.Display())
+			if b.Rating != 0 {
+				line += " " + strings.Repeat("★", b.Rating)
+			}
+			fmt.Println(line)
+		}
 	}
 	fmt.Printf("total: %d\n", len(books))
 	return nil
@@ -256,5 +315,42 @@ func cmdBackup(args []string) error {
 		return err
 	}
 	fmt.Println(backupPath)
+	return nil
+}
+
+// cmdStats prints a read-only aggregate of the shelf. It only loads the
+// ledger; it never saves (pure read — stats nunca muta el ledger).
+// Months without pages are omitted from the output.
+func cmdStats(args []string) error {
+	if len(args) > 0 {
+		return fmt.Errorf("uso: estanteria stats")
+	}
+	path, err := LedgerPath()
+	if err != nil {
+		return err
+	}
+	shelf, err := LoadShelf(path)
+	if err != nil {
+		return err
+	}
+	st := ComputeStats(shelf.Books, time.Now())
+	fmt.Printf("total: %d\n", st.Total)
+	fmt.Printf("quiero-leer: %d\n", st.ByStatus[StatusQuieroLeer])
+	fmt.Printf("leyendo: %d\n", st.ByStatus[StatusLeyendo])
+	fmt.Printf("leído: %d\n", st.ByStatus[StatusLeido])
+	fmt.Printf("rating promedio: %.2f/5\n", st.AvgRating)
+	if len(st.PagesPerMonth) == 0 {
+		fmt.Println("páginas por mes: (sin datos)")
+		return nil
+	}
+	fmt.Println("páginas por mes:")
+	months := make([]string, 0, len(st.PagesPerMonth))
+	for m := range st.PagesPerMonth {
+		months = append(months, m)
+	}
+	sort.Strings(months)
+	for _, m := range months {
+		fmt.Printf("  %s: %d\n", m, st.PagesPerMonth[m])
+	}
 	return nil
 }
