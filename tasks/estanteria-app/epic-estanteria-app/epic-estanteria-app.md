@@ -1,6 +1,6 @@
 ---
 type: epic
-status: in_progress
+status: done
 id: epic-estanteria-app
 title: "App: features de lectura"
 parent: estanteria-app

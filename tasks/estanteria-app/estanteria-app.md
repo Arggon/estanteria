@@ -1,6 +1,6 @@
 ---
 type: initiative
-status: todo
+status: done
 id: estanteria-app
 title: "Frente app: stats, búsqueda, web view, deploy Pages"
 labels: []
@@ -20,6 +20,6 @@ updated: "2026-09-14"
 
 ## Acceptance
 
-- [ ] 
+- [x] Frente app completo: issues #1-#4 implementados, mergeados y cerrados.
 
 ## Notes
