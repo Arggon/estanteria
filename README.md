@@ -26,6 +26,8 @@ estanteria status "el al" --set leyendo
 estanteria status "el aleph" --set leido --rating 5
 estanteria list                    # toda la estantería
 estanteria list --status leido     # solo terminados (con sus ratings)
+estanteria backup                  # copia fechada en ~/.estanteria-backups/
+estanteria backup --dir /tmp/bk    # copia fechada en otro directorio
 ```
 
 El libro se busca por id exacto o por prefijo de título, sin distinguir
@@ -34,6 +36,12 @@ mayúsculas ni acentos. El rating (1-5) solo aplica al terminar un libro.
 El estado vive en `$ESTANTERIA_FILE` o `~/.estanteria.json`. La escritura es
 atómica (archivo temporario + rename), así que un corte de luz nunca deja un
 ledger corrupto a medias.
+
+`estanteria backup` crea una copia fechada del ledger
+(`<dir>/ledger-YYYYMMDD-HHMMSS.json`, timestamp UTC, permisos 0600, escritura
+atómica) sin tocar jamás el ledger principal. Es la operación recomendada
+antes de editar el ledger a mano; la verificación y el restore están
+documentados en [docs/runbooks/backup-restore.md](docs/runbooks/backup-restore.md).
 
 ## Esquema del estado
 

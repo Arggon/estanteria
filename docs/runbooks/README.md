@@ -8,6 +8,7 @@ Operational runbooks for estanteria: step-by-step procedures for incidents, main
 <!-- One bullet per runbook, most-used first. -->
 
 - <!-- runbook-name.md — when to use it -->
+- [backup-restore.md](backup-restore.md) — respaldar el ledger antes de ediciones a mano y restaurarlo tras corrupción o pérdida.
 
 ## Writing a runbook
 

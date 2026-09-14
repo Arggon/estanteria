@@ -5,7 +5,9 @@ import (
 	"flag"
 	"fmt"
 	"os"
+	"path/filepath"
 	"strings"
+	"time"
 )
 
 // partitionArgs parses flags anywhere in args (the stdlib flag package stops
@@ -55,9 +57,11 @@ Uso:
   estanteria add <título> [--autor NOMBRE] [--paginas N]
   estanteria list [--status quiero-leer|leyendo|leido]
   estanteria status <libro> [--set quiero-leer|leyendo|leido] [--rating 1-5]
+  estanteria backup [--dir RUTA]
 
 El libro se busca por id exacto o por prefijo de título (sin distinguir
-mayúsculas ni acentos). El rating solo aplica con --set leido.
+mayúsculas ni acentos). El rating solo aplica con --set leido. El backup
+crea una copia fechada y atómica del ledger (nunca lo modifica).
 
 Variables: ESTANTERIA_FILE (default: ~/.estanteria.json)`
 
@@ -79,6 +83,8 @@ func run(args []string) int {
 		err = cmdList(rest)
 	case "status":
 		err = cmdStatus(rest)
+	case "backup":
+		err = cmdBackup(rest)
 	default:
 		err = fmt.Errorf("comando desconocido %q", cmd)
 	}
@@ -220,4 +226,35 @@ func trunc(s string, n int) string {
 		return s
 	}
 	return string(r[:n-1]) + "…"
+}
+
+// cmdBackup makes a dated, atomic copy of the ledger. It only ever reads the
+// main ledger; the copy goes under dir (default ~/.estanteria-backups).
+func cmdBackup(args []string) error {
+	fs := flag.NewFlagSet("backup", flag.ContinueOnError)
+	dirFlag := fs.String("dir", "", "directorio destino de los backups")
+	if partitionArgs(fs, args) != nil {
+		return fmt.Errorf("flags inválidas (mirá estanteria --help)")
+	}
+	if fs.NArg() != 0 {
+		return fmt.Errorf("uso: estanteria backup [--dir RUTA]")
+	}
+	dir := *dirFlag
+	if dir == "" {
+		home, err := os.UserHomeDir()
+		if err != nil {
+			return fmt.Errorf("no se pudo resolver el home: %w", err)
+		}
+		dir = filepath.Join(home, ".estanteria-backups")
+	}
+	path, err := LedgerPath()
+	if err != nil {
+		return err
+	}
+	backupPath, err := BackupLedger(path, dir, time.Now())
+	if err != nil {
+		return err
+	}
+	fmt.Println(backupPath)
+	return nil
 }
