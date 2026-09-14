@@ -1,12 +1,14 @@
 ---
 type: task
-status: todo
+status: in_progress
 id: task-issue-5
 title: "issue #5: Backup automático del ledger"
+assignee: Arggon
 parent: story-imported-issues
 labels: [enhancement]
 created: "2026-09-14"
 updated: "2026-09-14"
+claimed_at: "2026-09-14T13:47:12.447Z"
 issue: 5
 ---
 ## Propuesta
