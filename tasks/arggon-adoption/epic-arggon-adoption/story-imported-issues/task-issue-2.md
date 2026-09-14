@@ -20,3 +20,6 @@ Hoy `status <libro>` busca por prefijo de título. Falta un `estanteria search <
 - [ ] reutiliza el folding de acentos existente
 - [ ] tests table-driven
 > imported from issue #2
+
+### 2026-09-14 @Arggon
+Implementado y mergeado en PR #9 (story-issue-search, via claim race — fix #134 validado). Spec+plan: spec-issue-search-001.
