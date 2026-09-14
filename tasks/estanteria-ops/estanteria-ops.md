@@ -1,6 +1,6 @@
 ---
 type: initiative
-status: todo
+status: done
 id: estanteria-ops
 title: "Frente ops: backup del ledger y rotación"
 labels: []
@@ -20,6 +20,6 @@ updated: "2026-09-14"
 
 ## Acceptance
 
-- [ ] 
+- [x] Frente ops completo: issue #5 implementado y cerrado.
 
 ## Notes

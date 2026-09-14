@@ -331,6 +331,15 @@ func cmdStatus(args []string) error {
 	if err != nil {
 		return err
 	}
+	// --rating sin --set: solo tiene sentido recalificar un libro ya leido
+	// (leido -> leido); en cualquier otro caso es un error, nunca un no-op
+	// silencioso (bug-issue-6).
+	if *ratingRaw != 0 && newStatus == "" {
+		if book.Status != StatusLeido {
+			return fmt.Errorf("el rating solo aplica a libros leidos (con --set leido) o recalificando un leido")
+		}
+		newStatus = StatusLeido
+	}
 	if newStatus != "" {
 		if err := book.SetStatus(newStatus, *ratingRaw); err != nil {
 			return err
