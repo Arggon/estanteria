@@ -1,12 +1,14 @@
 ---
 type: task
-status: todo
+status: in_progress
 id: task-issue-4
 title: "issue #4: Deploy automático de la vista web (GitHub Actions → Pages)"
+assignee: Arggon
 parent: story-imported-issues
 labels: [enhancement]
 created: "2026-09-14"
 updated: "2026-09-14"
+claimed_at: "2026-09-14T13:47:11.475Z"
 issue: 4
 ---
 ## Propuesta
