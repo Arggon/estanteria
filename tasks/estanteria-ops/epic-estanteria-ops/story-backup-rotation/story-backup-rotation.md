@@ -7,6 +7,7 @@ parent: epic-estanteria-ops
 labels: []
 created: "2026-09-14"
 updated: "2026-09-14"
+depends_on: [story-ledger-backup]
 ---
 <!--
   Placement (v0): tasks/estanteria-ops/epic-estanteria-ops/story-backup-rotation/story-backup-rotation.md (story index; required).
