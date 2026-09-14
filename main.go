@@ -292,11 +292,12 @@ func trunc(s string, n int) string {
 func cmdBackup(args []string) error {
 	fs := flag.NewFlagSet("backup", flag.ContinueOnError)
 	dirFlag := fs.String("dir", "", "directorio destino de los backups")
+	keepFlag := fs.Int("keep", 0, "retención: conservar los N backups más nuevos (0 = sin límite)")
 	if partitionArgs(fs, args) != nil {
 		return fmt.Errorf("flags inválidas (mirá estanteria --help)")
 	}
 	if fs.NArg() != 0 {
-		return fmt.Errorf("uso: estanteria backup [--dir RUTA]")
+		return fmt.Errorf("uso: estanteria backup [--dir RUTA] [--keep N]")
 	}
 	dir := *dirFlag
 	if dir == "" {
@@ -315,6 +316,15 @@ func cmdBackup(args []string) error {
 		return err
 	}
 	fmt.Println(backupPath)
+	// Retención: solo tras un backup exitoso, y nunca toca el ledger
+	// principal ni nada fuera de dir.
+	removed, err := PruneBackups(dir, *keepFlag)
+	if err != nil {
+		return err
+	}
+	if len(removed) > 0 {
+		fmt.Printf("poda: %d backup(s) viejo(s) eliminado(s)\n", len(removed))
+	}
 	return nil
 }
 

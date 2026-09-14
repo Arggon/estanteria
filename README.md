@@ -28,6 +28,7 @@ estanteria list                    # toda la estantería
 estanteria list --status leido     # solo terminados (con sus ratings)
 estanteria backup                  # copia fechada en ~/.estanteria-backups/
 estanteria backup --dir /tmp/bk    # copia fechada en otro directorio
+estanteria backup --keep 7         # copia y conserva solo los 7 más nuevos
 estanteria stats                   # totales, rating promedio y páginas/mes (solo lectura)
 estanteria serve                   # vista web de SOLO LECTURA en http://127.0.0.1:8080
 ```
@@ -47,9 +48,12 @@ ledger corrupto a medias.
 
 `estanteria backup` crea una copia fechada del ledger
 (`<dir>/ledger-YYYYMMDD-HHMMSS.json`, timestamp UTC, permisos 0600, escritura
-atómica) sin tocar jamás el ledger principal. Es la operación recomendada
-antes de editar el ledger a mano; la verificación y el restore están
-documentados en [docs/runbooks/backup-restore.md](docs/runbooks/backup-restore.md).
+atómica) sin tocar jamás el ledger principal. Con `--keep N` (default 0 =
+sin límite) poda tras el backup los `N` backups más nuevos, sin tocar nunca
+el ledger ni archivos ajenos al patrón `ledger-*.json`. Es la operación
+recomendada antes de editar el ledger a mano; la verificación, la retención
+y el restore están documentados en
+[docs/runbooks/backup-restore.md](docs/runbooks/backup-restore.md).
 
 ## Esquema del estado
 

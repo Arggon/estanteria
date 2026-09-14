@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"sort"
+	"strings"
 	"time"
 )
 
@@ -41,6 +43,58 @@ func BackupLedger(srcPath, dir string, now time.Time) (string, error) {
 		return "", err
 	}
 	return dst, nil
+}
+
+// PruneBackups removes the oldest ledger-*.json backups under dir, keeping
+// the keep newest. keep <= 0 means no limit (no pruning, no-op).
+//
+// Ordering is by file name, which is chronological because the timestamp
+// format (ledger-YYYYMMDD-HHMMSS.json) sorts lexicographically; suffixes
+// (-1, -2 from a same-second collision) also sort after their base name.
+//
+// Invariants: pruning never touches anything outside dir, never removes a
+// file that does not match ledger-*.json (the main ledger is never under
+// this pattern), and never removes any of the keep newest backups.
+// A missing dir is a documented no-op (nothing to prune, no error).
+// Returns the removed paths in oldest-first order.
+func PruneBackups(dir string, keep int) ([]string, error) {
+	if keep <= 0 {
+		return nil, nil
+	}
+	entries, err := os.ReadDir(dir)
+	if err != nil {
+		if os.IsNotExist(err) {
+			return nil, nil // dir inexistente: nada que podar
+		}
+		return nil, fmt.Errorf("leyendo directorio de backups %s: %w", dir, err)
+	}
+	var backups []string
+	for _, e := range entries {
+		if e.IsDir() || !isLedgerBackupName(e.Name()) {
+			continue
+		}
+		backups = append(backups, e.Name())
+	}
+	if len(backups) <= keep {
+		return nil, nil
+	}
+	sort.Strings(backups) // nombre == cronológico
+	obsolete := backups[:len(backups)-keep]
+	var removed []string
+	for _, name := range obsolete {
+		if err := os.Remove(filepath.Join(dir, name)); err != nil {
+			return removed, fmt.Errorf("eliminando backup viejo %s: %w", name, err)
+		}
+		removed = append(removed, filepath.Join(dir, name))
+	}
+	return removed, nil
+}
+
+// isLedgerBackupName reports whether name matches ledger-*.json exactly
+// (no subdirectories, nothing else is ever a candidate for pruning).
+func isLedgerBackupName(name string) bool {
+	return strings.HasPrefix(name, "ledger-") && strings.HasSuffix(name, ".json") &&
+		len(name) > len("ledger-.json")
 }
 
 // uniqueDestination appends -1, -2, … before the extension until the path
