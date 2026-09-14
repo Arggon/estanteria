@@ -11,3 +11,6 @@
 
 # generated MCP registration must be committed
 !.mcp.json
+
+# MCP session state (socket/pid/log) — log snapshots go to .evidence/
+.mcp-session/
