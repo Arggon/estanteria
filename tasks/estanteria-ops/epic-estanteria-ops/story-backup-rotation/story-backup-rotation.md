@@ -1,13 +1,17 @@
 ---
 type: story
-status: todo
+status: in_progress
 id: story-backup-rotation
 title: Rotación y retención de backups
+assignee: Arggon
+branch: feat/story-backup-rotation
 parent: epic-estanteria-ops
 labels: []
 created: "2026-09-14"
 updated: "2026-09-14"
+claimed_at: "2026-09-14T13:43:11.382Z"
 depends_on: [story-ledger-backup]
+worktree_path: /home/arggon/Projects/estanteria-story-backup-rotation
 ---
 <!--
   Placement (v0): tasks/estanteria-ops/epic-estanteria-ops/story-backup-rotation/story-backup-rotation.md (story index; required).
