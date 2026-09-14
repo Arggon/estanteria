@@ -6,6 +6,21 @@ branch_patterns:
   task: "feat/{id}"
   bug: "fix/{id}"
 
+x-tracker:
+  auto-commit: true
+
+x-worktree:
+  post-start: "go mod download"
+
+x-views:
+  app: "parent:estanteria-app"
+  ops: "parent:estanteria-ops"
+
+x-import:
+  label-types:
+    bug: bug
+    enhancement: task
+
 x-generated:
   .agents/skills/arggon-cli/SKILL.md:
     template: "skills/arggon-cli/SKILL.md"
