@@ -1,6 +1,6 @@
 ---
 type: story
-status: in_progress
+status: done
 id: story-pages-deploy
 title: Deploy de la vista a GitHub Pages
 assignee: Arggon
@@ -9,7 +9,6 @@ parent: epic-estanteria-app
 labels: []
 created: "2026-09-14"
 updated: "2026-09-14"
-claimed_at: "2026-09-14T13:43:11.272Z"
 depends_on: [story-web-view]
 worktree_path: /home/arggon/Projects/estanteria-story-pages-deploy
 ---
@@ -26,9 +25,9 @@ worktree_path: /home/arggon/Projects/estanteria-story-pages-deploy
 
 ## Acceptance
 
-- [ ] estanteria render --out <file> genera la vista estática desde un ledger
-- [ ] workflow .github/workflows/pages.yml publica a Pages en push a main
-- [ ] sitio 100% de solo lectura; workflow commiteado en el PR
-- [ ] Closes GitHub issue #4; task-issue-4 actualizado con referencia al PR
+- [x] estanteria render --out <file> genera la vista estática desde un ledger
+- [x] workflow .github/workflows/pages.yml publica a Pages en push a main
+- [x] sitio 100% de solo lectura; workflow commiteado en el PR
+- [x] Closes GitHub issue #4; task-issue-4 actualizado con referencia al PR
 
 ## Notes
