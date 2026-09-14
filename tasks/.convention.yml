@@ -11,84 +11,101 @@ x-generated:
     template: "skills/arggon-cli/SKILL.md"
     checksum: "sha256:a4ebebad355e9ea7e69c1204c70eea9cc8e532cf7a167461d71d1cd520fa31d6"
     arggonVersion: "0.0.0"
-    generatedAt: "2026-09-14T13:13:57.505Z"
+    generatedAt: "2026-09-14T13:19:12.333Z"
+    acknowledged: true
   .editorconfig:
     template: "docs/editorconfig"
     checksum: "sha256:e4af4ecad1dc8af3f2b24f3821b8caa338f1cc9e4297fb5b5b753da845a32d15"
     arggonVersion: "0.0.0"
-    generatedAt: "2026-09-14T13:13:57.505Z"
+    generatedAt: "2026-09-14T13:19:12.333Z"
+    acknowledged: true
   .github/CODEOWNERS:
     template: "docs/github/CODEOWNERS"
     checksum: "sha256:cada6ed917c883208dae198ca949dd11db8ec4bbf324392982f4d68ae1099a6f"
     arggonVersion: "0.0.0"
-    generatedAt: "2026-09-14T13:13:57.505Z"
+    generatedAt: "2026-09-14T13:19:12.333Z"
+    acknowledged: true
   .github/PULL_REQUEST_TEMPLATE.md:
     template: "docs/github/PULL_REQUEST_TEMPLATE.md"
     checksum: "sha256:664fb35e24626fa521e03ba94dcbf70b9edf2171d48cacbd4bd22da8731704d1"
     arggonVersion: "0.0.0"
-    generatedAt: "2026-09-14T13:13:57.505Z"
+    generatedAt: "2026-09-14T13:19:12.333Z"
+    acknowledged: true
   .github/copilot-instructions.md:
     template: "docs/github/copilot-instructions.md"
     checksum: "sha256:eb17f6ffb4d66193bd4a5e5ee597c97492144a9232c4e05db90e43b54c7e0d20"
     arggonVersion: "0.0.0"
-    generatedAt: "2026-09-14T13:13:57.505Z"
+    generatedAt: "2026-09-14T13:19:12.333Z"
+    acknowledged: true
   .mcp.json:
     template: "docs/mcp-json"
     checksum: "sha256:a2052811395c3dadbf77593031b72d7572f50e6103ddd35c8e2ca3b05e6b29fc"
     arggonVersion: "0.0.0"
-    generatedAt: "2026-09-14T13:13:57.505Z"
+    generatedAt: "2026-09-14T13:19:12.333Z"
+    acknowledged: true
   AGENTS.md:
     template: "docs/AGENTS.md"
-    checksum: "sha256:c66880c11f12dfd9fc4743e8519b548f4741fd3148ff503b025ee76146c03f8c"
+    checksum: "sha256:c88e89c096386f7cbd96ed917b9301b5884b10288cbc6cd42634f1d8ec5ca971"
     arggonVersion: "0.0.0"
-    generatedAt: "2026-09-14T13:13:57.505Z"
+    generatedAt: "2026-09-14T13:19:12.333Z"
+    acknowledged: true
   ARCHITECTURE.md:
     template: "docs/ARCHITECTURE.md"
-    checksum: "sha256:37c488b9911e54880c727b689cc6228273b8ef0de7fe01624d67fa1b409945c7"
+    checksum: "sha256:423fc33d61ac0b6869dd68933928194b43f86d0277751abb671e04a3753a4f66"
     arggonVersion: "0.0.0"
-    generatedAt: "2026-09-14T13:13:57.505Z"
+    generatedAt: "2026-09-14T13:19:12.333Z"
+    acknowledged: true
   CHANGELOG.md:
     template: "docs/CHANGELOG.md"
-    checksum: "sha256:5254055caf5a59d12169250c8053907358f7925ad5bf1203135c9dfb1e43c7d8"
+    checksum: "sha256:507005d7b9b14e36b83fdc92246962d546dba1b5c0ff6890a437bd912a1be6e7"
     arggonVersion: "0.0.0"
-    generatedAt: "2026-09-14T13:13:57.505Z"
+    generatedAt: "2026-09-14T13:19:12.333Z"
+    acknowledged: true
   CLAUDE.md:
     template: "docs/CLAUDE.md"
     checksum: "sha256:63e50bfeda0d64c0c4b921f8be72bf10c0418603c6fe41b6e12de08f84765558"
     arggonVersion: "0.0.0"
-    generatedAt: "2026-09-14T13:13:57.505Z"
+    generatedAt: "2026-09-14T13:19:12.333Z"
+    acknowledged: true
   CONTRIBUTING.md:
     template: "docs/CONTRIBUTING.md"
-    checksum: "sha256:ad7a9c9c3670739fb3105b33952cc47425f99cc0df8a6007c46bd298d5e38e91"
+    checksum: "sha256:875f85b26cc782cea439bb9cf616dae530a0225f7cc14705546801758a7b41bc"
     arggonVersion: "0.0.0"
-    generatedAt: "2026-09-14T13:13:57.505Z"
+    generatedAt: "2026-09-14T13:19:12.333Z"
+    acknowledged: true
   SECURITY.md:
     template: "docs/SECURITY.md"
-    checksum: "sha256:4f166744b0ec18e6ee421b49c11127fe43c236c9dc816c6a54b0e0acb2934437"
+    checksum: "sha256:f13babe882a2383da664c7cc2716215d4da2ad95d40299d2de37f4f18e0b4751"
     arggonVersion: "0.0.0"
-    generatedAt: "2026-09-14T13:13:57.505Z"
+    generatedAt: "2026-09-14T13:19:12.333Z"
+    acknowledged: true
   SUPPORT.md:
     template: "docs/SUPPORT.md"
-    checksum: "sha256:adb138dc8357435bca0cd357f08fe9ae6efc8f96ca0d85051603a98814d3e756"
+    checksum: "sha256:95d1b19dc6d3d4a49065adb22e28e8d1a402bb17c1ab6d051af86eef4b13e552"
     arggonVersion: "0.0.0"
-    generatedAt: "2026-09-14T13:13:57.505Z"
+    generatedAt: "2026-09-14T13:19:12.333Z"
+    acknowledged: true
   docs/convention.md:
     template: "docs/docs/convention.md"
     checksum: "sha256:21bdb7f23675c013ff4455aa8dde5eafed3c0e2b4bb04faef7cbbe84266b3317"
     arggonVersion: "0.0.0"
-    generatedAt: "2026-09-14T13:13:57.505Z"
+    generatedAt: "2026-09-14T13:19:12.333Z"
+    acknowledged: true
   docs/engineering.md:
     template: "docs/docs/engineering.md"
-    checksum: "sha256:03d3bd8b44459ef119bbfc03bf187ebe02d00e962daa086655ad28f53171bc7f"
+    checksum: "sha256:a1b5bfff836af9fc225714b79e791a9a4630e40897f84f87f324eaf78187052d"
     arggonVersion: "0.0.0"
-    generatedAt: "2026-09-14T13:13:57.505Z"
+    generatedAt: "2026-09-14T13:19:12.333Z"
+    acknowledged: true
   docs/runbooks/README.md:
     template: "docs/docs/runbooks/README.md"
     checksum: "sha256:be8d0a73d44451781b741b235bd58826a0e8a31f4c2ce8f800007f7f7c7bf4a7"
     arggonVersion: "0.0.0"
-    generatedAt: "2026-09-14T13:13:57.505Z"
+    generatedAt: "2026-09-14T13:19:12.333Z"
+    acknowledged: true
   docs/tracking.md:
     template: "docs/tracking.md"
     checksum: "sha256:88ce14228c3b705d629a55543b8714fa98544af7449518d72586b8b6594c5ddf"
     arggonVersion: "0.0.0"
-    generatedAt: "2026-09-14T13:13:57.505Z"
+    generatedAt: "2026-09-14T13:19:12.333Z"
+    acknowledged: true

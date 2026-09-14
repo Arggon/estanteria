@@ -51,6 +51,5 @@ go build -o estanteria .
 
 ## Decisiones
 
-Las decisiones de diseño (informales) están en
-[docs/DECISIONS.md](docs/DECISIONS.md): por qué Go, por qué un JSON file y por
-qué CLI-first.
+Las decisiones de diseño están formalizadas como ADRs en
+[docs/adr/](docs/adr/): por qué Go, por qué un JSON file y por qué CLI-first.

@@ -7,7 +7,7 @@ Instructions for humans and AI agents working on **estanteria**. Read this file 
 
 <!-- Describe the project in one or two sentences: what it does, for whom, and its core constraint. -->
 
-estanteria — <!-- TODO: one-sentence project description -->.
+estanteria — tracker de lectura personal: un CLI en Go sobre un ledger JSON con escritura atómica (statuses quiero-leer/leyendo/leído + rating al terminar); un solo usuario, sin servidor, la web es un extra de solo lectura.
 
 ## Task workflow
 
