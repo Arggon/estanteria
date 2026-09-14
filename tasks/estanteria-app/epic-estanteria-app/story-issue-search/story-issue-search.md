@@ -1,6 +1,6 @@
 ---
 type: story
-status: in_progress
+status: done
 id: story-issue-search
 title: Búsqueda por título/autor
 assignee: Arggon
@@ -9,7 +9,6 @@ parent: epic-estanteria-app
 labels: []
 created: "2026-09-14"
 updated: "2026-09-14"
-claimed_at: "2026-09-14T13:31:02.434Z"
 worktree_path: /home/arggon/Projects/estanteria-story-issue-search
 ---
 <!--
@@ -25,9 +24,9 @@ worktree_path: /home/arggon/Projects/estanteria-story-issue-search
 
 ## Acceptance
 
-- [ ] estanteria search <q> matchea título y autor sin distinguir mayúsculas/acentos
-- [ ] lista TODOS los matches con su status
-- [ ] reutiliza el folding de acentos existente; tests table-driven
-- [ ] Closes GitHub issue #2; task-issue-2 actualizado con referencia al PR
+- [x] estanteria search <q> matchea título y autor sin distinguir mayúsculas/acentos
+- [x] lista TODOS los matches con su status
+- [x] reutiliza el folding de acentos existente; tests table-driven
+- [x] Closes GitHub issue #2; task-issue-2 actualizado con referencia al PR
 
 ## Notes
