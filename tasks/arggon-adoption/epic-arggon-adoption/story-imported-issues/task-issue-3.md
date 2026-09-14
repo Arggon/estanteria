@@ -1,12 +1,14 @@
 ---
 type: task
-status: todo
+status: in_progress
 id: task-issue-3
 title: "issue #3: Vista web de la estantería (solo lectura, net/http stdlib)"
+assignee: Arggon
 parent: story-imported-issues
 labels: [enhancement]
 created: "2026-09-14"
 updated: "2026-09-14"
+claimed_at: "2026-09-14T13:42:22.030Z"
 issue: 3
 ---
 ## Propuesta
