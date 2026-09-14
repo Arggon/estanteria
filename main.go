@@ -6,7 +6,9 @@ import (
 	"fmt"
 	"net/http"
 	"os"
+	"sort"
 	"strings"
+	"time"
 )
 
 // partitionArgs parses flags anywhere in args (the stdlib flag package stops
@@ -56,6 +58,7 @@ Uso:
   estanteria add <título> [--autor NOMBRE] [--paginas N]
   estanteria list [--status quiero-leer|leyendo|leido]
   estanteria status <libro> [--set quiero-leer|leyendo|leido] [--rating 1-5]
+  estanteria stats
   estanteria serve [--addr 127.0.0.1:8080]
 
 El libro se busca por id exacto o por prefijo de título (sin distinguir
@@ -81,6 +84,8 @@ func run(args []string) int {
 		err = cmdList(rest)
 	case "status":
 		err = cmdStatus(rest)
+	case "stats":
+		err = cmdStats(rest)
 	case "serve":
 		err = cmdServe(rest)
 	default:
@@ -240,4 +245,41 @@ func trunc(s string, n int) string {
 		return s
 	}
 	return string(r[:n-1]) + "…"
+}
+
+// cmdStats prints a read-only aggregate of the shelf. It only loads the
+// ledger; it never saves (pure read — stats nunca muta el ledger).
+// Months without pages are omitted from the output.
+func cmdStats(args []string) error {
+	if len(args) > 0 {
+		return fmt.Errorf("uso: estanteria stats")
+	}
+	path, err := LedgerPath()
+	if err != nil {
+		return err
+	}
+	shelf, err := LoadShelf(path)
+	if err != nil {
+		return err
+	}
+	st := ComputeStats(shelf.Books, time.Now())
+	fmt.Printf("total: %d\n", st.Total)
+	fmt.Printf("quiero-leer: %d\n", st.ByStatus[StatusQuieroLeer])
+	fmt.Printf("leyendo: %d\n", st.ByStatus[StatusLeyendo])
+	fmt.Printf("leído: %d\n", st.ByStatus[StatusLeido])
+	fmt.Printf("rating promedio: %.2f/5\n", st.AvgRating)
+	if len(st.PagesPerMonth) == 0 {
+		fmt.Println("páginas por mes: (sin datos)")
+		return nil
+	}
+	fmt.Println("páginas por mes:")
+	months := make([]string, 0, len(st.PagesPerMonth))
+	for m := range st.PagesPerMonth {
+		months = append(months, m)
+	}
+	sort.Strings(months)
+	for _, m := range months {
+		fmt.Printf("  %s: %d\n", m, st.PagesPerMonth[m])
+	}
+	return nil
 }

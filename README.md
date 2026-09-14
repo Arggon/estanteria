@@ -26,6 +26,7 @@ estanteria status "el al" --set leyendo
 estanteria status "el aleph" --set leido --rating 5
 estanteria list                    # toda la estantería
 estanteria list --status leido     # solo terminados (con sus ratings)
+estanteria stats                   # totales, rating promedio y páginas/mes (solo lectura)
 estanteria serve                   # vista web de SOLO LECTURA en http://127.0.0.1:8080
 ```
 
