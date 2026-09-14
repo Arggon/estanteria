@@ -1,12 +1,16 @@
 ---
 type: story
-status: todo
+status: in_progress
 id: story-reading-stats
 title: "Stats de lectura: páginas/mes y ratings promedio"
+assignee: Arggon
+branch: feat/story-reading-stats
 parent: epic-estanteria-app
 labels: []
 created: "2026-09-14"
 updated: "2026-09-14"
+claimed_at: "2026-09-14T13:31:02.868Z"
+worktree_path: /home/arggon/Projects/estanteria-story-reading-stats
 ---
 <!--
   Placement (v0): tasks/estanteria-app/epic-estanteria-app/story-reading-stats/story-reading-stats.md (story index; required).
