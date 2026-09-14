@@ -10,7 +10,6 @@ labels: []
 created: "2026-09-14"
 updated: "2026-09-14"
 depends_on: [story-ledger-backup]
-worktree_path: /home/arggon/Projects/estanteria-story-backup-rotation
 ---
 <!--
   Placement (v0): tasks/estanteria-ops/epic-estanteria-ops/story-backup-rotation/story-backup-rotation.md (story index; required).

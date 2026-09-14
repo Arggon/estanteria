@@ -10,7 +10,6 @@ labels: [bug]
 created: "2026-09-14"
 updated: "2026-09-14"
 issue: 6
-worktree_path: /home/arggon/Projects/estanteria-bug-issue-6
 ---
 ## Bug
 

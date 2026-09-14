@@ -10,7 +10,6 @@ labels: []
 created: "2026-09-14"
 updated: "2026-09-14"
 depends_on: [story-web-view]
-worktree_path: /home/arggon/Projects/estanteria-story-pages-deploy
 ---
 <!--
   Placement (v0): tasks/estanteria-app/epic-estanteria-app/story-pages-deploy/story-pages-deploy.md (story index; required).

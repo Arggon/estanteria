@@ -9,7 +9,6 @@ parent: epic-estanteria-app
 labels: []
 created: "2026-09-14"
 updated: "2026-09-14"
-worktree_path: /home/arggon/Projects/estanteria-story-web-view
 ---
 <!--
   Placement (v0): tasks/estanteria-app/epic-estanteria-app/story-web-view/story-web-view.md (story index; required).
