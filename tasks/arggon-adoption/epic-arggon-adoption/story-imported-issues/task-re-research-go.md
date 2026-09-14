@@ -1,6 +1,6 @@
 ---
 type: task
-status: in_progress
+status: done
 id: task-re-research-go
 title: "Re-research go playbook (v1.27.1, 100 days old)"
 assignee: Arggon
@@ -8,7 +8,6 @@ parent: story-imported-issues
 labels: []
 created: "2026-09-14"
 updated: "2026-09-14"
-claimed_at: "2026-09-14T13:52:04.686Z"
 ---
 ## Context
 
