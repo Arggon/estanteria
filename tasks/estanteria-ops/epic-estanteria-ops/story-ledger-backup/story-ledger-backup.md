@@ -1,6 +1,6 @@
 ---
 type: story
-status: in_progress
+status: done
 id: story-ledger-backup
 title: Backup fechado del ledger
 assignee: Arggon
@@ -9,7 +9,6 @@ parent: epic-estanteria-ops
 labels: []
 created: "2026-09-14"
 updated: "2026-09-14"
-claimed_at: "2026-09-14T13:31:02.508Z"
 worktree_path: /home/arggon/Projects/estanteria-story-ledger-backup
 ---
 <!--
@@ -25,9 +24,9 @@ worktree_path: /home/arggon/Projects/estanteria-story-ledger-backup
 
 ## Acceptance
 
-- [ ] estanteria backup crea copia fechada del ledger (escritura atómica)
-- [ ] runbook de backup/restore en docs/runbooks/
-- [ ] tests table-driven; go test ./... && go vet ./... en verde
-- [ ] Closes GitHub issue #5; task-issue-5 actualizado con referencia al PR
+- [x] estanteria backup crea copia fechada del ledger (escritura atómica)
+- [x] runbook de backup/restore en docs/runbooks/
+- [x] tests table-driven; go test ./... && go vet ./... en verde
+- [x] Closes GitHub issue #5; task-issue-5 actualizado con referencia al PR
 
 ## Notes
