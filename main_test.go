@@ -136,3 +136,61 @@ func TestCLIEndToEnd(t *testing.T) {
 		})
 	}
 }
+
+func TestCLIRatingWithoutSet(t *testing.T) {
+	tests := []struct {
+		name    string
+		steps   []struct {
+			args     []string
+			wantCode int
+			wantOut  string
+			wantErr  string
+		}
+	}{
+		{
+			name: "recalifica un leido",
+			steps: []struct {
+				args     []string
+				wantCode int
+				wantOut  string
+				wantErr  string
+			}{
+				{[]string{"add", "Rayuela"}, 0, "agregado", ""},
+				{[]string{"status", "rayuela", "--set", "leido", "--rating", "3"}, 0, "leído (3/5)", ""},
+				{[]string{"status", "rayuela", "--rating", "5"}, 0, "leído (5/5)", ""},
+			},
+		},
+		{
+			name: "rating sin set sobre un leyendo es error explicito",
+			steps: []struct {
+				args     []string
+				wantCode int
+				wantOut  string
+				wantErr  string
+			}{
+				{[]string{"add", "Ficciones"}, 0, "agregado", ""},
+				{[]string{"status", "ficciones", "--set", "leyendo"}, 0, "leyendo", ""},
+				{[]string{"status", "ficciones", "--rating", "5"}, 1, "", "rating solo aplica"},
+			},
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			t.Setenv("ESTANTERIA_FILE", filepath.Join(t.TempDir(), "ledger.json"))
+			for i, step := range tt.steps {
+				var out, errOut string
+				var got int
+				out, errOut = capture(t, func() { got = run(step.args) })
+				if got != step.wantCode {
+					t.Fatalf("paso %d %v: código = %d, want %d", i, step.args, got, step.wantCode)
+				}
+				if step.wantOut != "" && !strings.Contains(out, step.wantOut) {
+					t.Errorf("paso %d %v: stdout %q no contiene %q", i, step.args, out, step.wantOut)
+				}
+				if step.wantErr != "" && !strings.Contains(errOut, step.wantErr) {
+					t.Errorf("paso %d %v: stderr %q no contiene %q", i, step.args, errOut, step.wantErr)
+				}
+			}
+		})
+	}
+}

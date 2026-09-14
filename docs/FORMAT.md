@@ -41,8 +41,8 @@ presente en la salida (nunca `null`).
 - `quiero-leer → leyendo → leido` es el flujo normal; los saltos hacia atrás
   están permitidos.
 - `rating` solo se acepta en la transición **hacia** `leido` (con `--set leido
-  --rating N`); sin `--set`, un `--rating` se ignora — *(bug conocido, ver
-  issue "rating sin --set se ignora silenciosamente")*.
+  --rating N`). Sin `--set`, un `--rating` recalifica un libro que ya está
+  `leido`; sobre cualquier otro status es un error explícito (fix bug-issue-6).
 - Pasar a `leido` fija `finished`; salir de `leido` limpia `rating` y
   `finished`.
 
