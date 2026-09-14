@@ -21,6 +21,10 @@ updated: "2026-09-14"
 
 ## Acceptance
 
-- [ ] 
+- [ ] estanteria serve [--addr] sirve HTML de solo lectura (por defecto 127.0.0.1)
+- [ ] agrupado por status con ratings; ningún endpoint muta el ledger
+- [ ] generador de HTML compartido con el render estático (ver ADR 0004)
+- [ ] tests del handler con httptest; go test ./... && go vet ./... en verde
+- [ ] Closes GitHub issue #3; task-issue-3 actualizado con referencia al PR
 
 ## Notes

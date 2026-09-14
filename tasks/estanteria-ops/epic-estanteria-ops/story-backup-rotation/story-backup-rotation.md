@@ -22,6 +22,9 @@ depends_on: [story-ledger-backup]
 
 ## Acceptance
 
-- [ ] 
+- [ ] estanteria backup --keep N poda los backups más viejos (retención)
+- [ ] la poda nunca toca el ledger principal ni el backup más reciente
+- [ ] tests table-driven de la rotación; runbook actualizado
+- [ ] cierra el alcance del issue #5 (rotación); task-issue-5 comentado
 
 ## Notes

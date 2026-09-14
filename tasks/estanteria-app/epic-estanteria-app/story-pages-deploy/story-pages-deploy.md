@@ -22,6 +22,9 @@ depends_on: [story-web-view]
 
 ## Acceptance
 
-- [ ] 
+- [ ] estanteria render --out <file> genera la vista estática desde un ledger
+- [ ] workflow .github/workflows/pages.yml publica a Pages en push a main
+- [ ] sitio 100% de solo lectura; workflow commiteado en el PR
+- [ ] Closes GitHub issue #4; task-issue-4 actualizado con referencia al PR
 
 ## Notes

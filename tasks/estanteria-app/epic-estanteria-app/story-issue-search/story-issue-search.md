@@ -21,6 +21,9 @@ updated: "2026-09-14"
 
 ## Acceptance
 
-- [ ] 
+- [ ] estanteria search <q> matchea título y autor sin distinguir mayúsculas/acentos
+- [ ] lista TODOS los matches con su status
+- [ ] reutiliza el folding de acentos existente; tests table-driven
+- [ ] Closes GitHub issue #2; task-issue-2 actualizado con referencia al PR
 
 ## Notes

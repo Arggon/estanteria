@@ -21,6 +21,9 @@ updated: "2026-09-14"
 
 ## Acceptance
 
-- [ ] 
+- [ ] estanteria backup crea copia fechada del ledger (escritura atómica)
+- [ ] runbook de backup/restore en docs/runbooks/
+- [ ] tests table-driven; go test ./... && go vet ./... en verde
+- [ ] Closes GitHub issue #5; task-issue-5 actualizado con referencia al PR
 
 ## Notes

@@ -21,6 +21,10 @@ updated: "2026-09-14"
 
 ## Acceptance
 
-- [ ] 
+- [ ] estanteria stats muestra páginas leídas por mes (últimos 12 meses, desde finished+pages)
+- [ ] muestra promedio de ratings y conteos por status
+- [ ] libros sin pages o sin finished no rompen el cálculo
+- [ ] tests table-driven del cálculo; go test ./... && go vet ./... en verde
+- [ ] Closes GitHub issue #1; task-issue-1 actualizado con referencia al PR
 
 ## Notes
