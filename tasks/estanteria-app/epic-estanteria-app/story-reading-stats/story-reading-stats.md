@@ -1,6 +1,6 @@
 ---
 type: story
-status: in_progress
+status: done
 id: story-reading-stats
 title: "Stats de lectura: páginas/mes y ratings promedio"
 assignee: Arggon
@@ -9,7 +9,6 @@ parent: epic-estanteria-app
 labels: []
 created: "2026-09-14"
 updated: "2026-09-14"
-claimed_at: "2026-09-14T13:31:02.868Z"
 worktree_path: /home/arggon/Projects/estanteria-story-reading-stats
 ---
 <!--
@@ -25,10 +24,10 @@ worktree_path: /home/arggon/Projects/estanteria-story-reading-stats
 
 ## Acceptance
 
-- [ ] estanteria stats muestra páginas leídas por mes (últimos 12 meses, desde finished+pages)
-- [ ] muestra promedio de ratings y conteos por status
-- [ ] libros sin pages o sin finished no rompen el cálculo
-- [ ] tests table-driven del cálculo; go test ./... && go vet ./... en verde
-- [ ] Closes GitHub issue #1; task-issue-1 actualizado con referencia al PR
+- [x] estanteria stats muestra páginas leídas por mes (últimos 12 meses, desde finished+pages)
+- [x] muestra promedio de ratings y conteos por status
+- [x] libros sin pages o sin finished no rompen el cálculo
+- [x] tests table-driven del cálculo; go test ./... && go vet ./... en verde
+- [x] Closes GitHub issue #1; task-issue-1 actualizado con referencia al PR
 
 ## Notes
