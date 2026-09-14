@@ -1,0 +1,22 @@
+---
+type: task
+status: todo
+id: task-issue-2
+title: "issue #2: Búsqueda por título/autor"
+parent: story-imported-issues
+labels: [enhancement]
+created: "2026-09-14"
+updated: "2026-09-14"
+issue: 2
+---
+## Propuesta
+
+Hoy `status <libro>` busca por prefijo de título. Falta un `estanteria search <query>` que busque en título Y autor, listando todos los matches (no solo el mejor).
+
+## Criterios de aceptación
+
+- [ ] `estanteria search <q>` matchea título y autor, sin distinguir mayúsculas ni acentos
+- [ ] lista TODOS los matches con su status
+- [ ] reutiliza el folding de acentos existente
+- [ ] tests table-driven
+> imported from issue #2
