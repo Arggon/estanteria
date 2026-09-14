@@ -1,12 +1,16 @@
 ---
 type: story
-status: todo
+status: in_progress
 id: story-web-view
 title: Vista web de solo lectura (serve)
+assignee: Arggon
+branch: feat/story-web-view
 parent: epic-estanteria-app
 labels: []
 created: "2026-09-14"
 updated: "2026-09-14"
+claimed_at: "2026-09-14T13:31:06.504Z"
+worktree_path: /home/arggon/Projects/estanteria-story-web-view
 ---
 <!--
   Placement (v0): tasks/estanteria-app/epic-estanteria-app/story-web-view/story-web-view.md (story index; required).
