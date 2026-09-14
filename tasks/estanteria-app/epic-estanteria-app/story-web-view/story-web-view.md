@@ -1,6 +1,6 @@
 ---
 type: story
-status: in_progress
+status: done
 id: story-web-view
 title: Vista web de solo lectura (serve)
 assignee: Arggon
@@ -9,7 +9,6 @@ parent: epic-estanteria-app
 labels: []
 created: "2026-09-14"
 updated: "2026-09-14"
-claimed_at: "2026-09-14T13:31:06.504Z"
 worktree_path: /home/arggon/Projects/estanteria-story-web-view
 ---
 <!--
@@ -25,10 +24,10 @@ worktree_path: /home/arggon/Projects/estanteria-story-web-view
 
 ## Acceptance
 
-- [ ] estanteria serve [--addr] sirve HTML de solo lectura (por defecto 127.0.0.1)
-- [ ] agrupado por status con ratings; ningún endpoint muta el ledger
-- [ ] generador de HTML compartido con el render estático (ver ADR 0004)
-- [ ] tests del handler con httptest; go test ./... && go vet ./... en verde
-- [ ] Closes GitHub issue #3; task-issue-3 actualizado con referencia al PR
+- [x] estanteria serve [--addr] sirve HTML de solo lectura (por defecto 127.0.0.1)
+- [x] agrupado por status con ratings; ningún endpoint muta el ledger
+- [x] generador de HTML compartido con el render estático (ver ADR 0004)
+- [x] tests del handler con httptest; go test ./... && go vet ./... en verde
+- [x] Closes GitHub issue #3; task-issue-3 actualizado con referencia al PR
 
 ## Notes
