@@ -1,12 +1,14 @@
 ---
 type: task
-status: todo
+status: in_progress
 id: task-adopt-arggon
 title: Adopt ArggonManager in this repo
+assignee: Arggon
 parent: story-arggon-adoption
 labels: []
 created: "2026-09-14"
 updated: "2026-09-14"
+claimed_at: "2026-09-14T13:19:56.773Z"
 ---
 ## Context
 
