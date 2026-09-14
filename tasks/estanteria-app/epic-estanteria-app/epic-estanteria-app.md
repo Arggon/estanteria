@@ -1,6 +1,6 @@
 ---
 type: epic
-status: todo
+status: in_progress
 id: epic-estanteria-app
 title: "App: features de lectura"
 parent: estanteria-app
@@ -21,6 +21,6 @@ updated: "2026-09-14"
 
 ## Acceptance
 
-- [ ] 
+- [x] Las 4 stories del frente app están done (stats, búsqueda, web view, deploy Pages) con PRs mergeados.
 
 ## Notes
