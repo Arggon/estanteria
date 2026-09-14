@@ -1,6 +1,6 @@
 ---
 type: task
-status: in_progress
+status: done
 id: task-issue-1
 title: "issue #1: Stats de lectura (páginas/mes, ratings promedio)"
 assignee: Arggon
@@ -8,7 +8,6 @@ parent: story-imported-issues
 labels: [enhancement]
 created: "2026-09-14"
 updated: "2026-09-14"
-claimed_at: "2026-09-14T13:42:21.859Z"
 issue: 1
 ---
 ## Propuesta
