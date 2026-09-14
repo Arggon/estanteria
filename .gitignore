@@ -8,3 +8,6 @@
 # stray plugin cache pointers (not project content)
 .v2c/
 .video_agent/
+
+# generated MCP registration must be committed
+!.mcp.json
