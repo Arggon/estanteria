@@ -22,3 +22,6 @@ El ledger es el activo irremplazable del proyecto. Mecanismo de backup: copia fe
 
 ### 2026-09-14 @Arggon
 Primera mitad mergeada en PR #10 (story-ledger-backup: backup fechado atómico + runbook). La rotación/retención cierra el issue con story-backup-rotation.
+
+### 2026-09-14 @Arggon
+Rotación mergeada en PR #12 (story-backup-rotation: --keep N). Issue #5 completo: backup fechado (PR #10) + retención (PR #12).
