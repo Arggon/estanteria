@@ -28,3 +28,14 @@ arggon adopt --dry-run --json
 - [ ] 6. Baseline the sanctioned edits: run `arggon adopt --ack` so the generated docs you completed in step 3 become the new x-generated baseline (their checksums are refreshed and they stop reporting as modified). Hand edits made AFTER this ack still report modified — the protection stays intact.
 - [ ] 7. Verify: `arggon validate` + `arggon spec validate` (if specs exist) + `arggon playbook status`.
 - [ ] 8. Report: comment on this task (`arggon comment task-adopt-arggon`) listing the extracted content, archived files, and created playbooks; flip this task done when the human reviews.
+
+### 2026-09-14 @Arggon
+Adoption checklist executed (2026-09-14):
+
+1. Generated governing docs read (AGENTS.md, convention.md, engineering.md).
+2-3. Extraction: informal DECISIONS.md formalized into docs/adr/0001-go.md, 0002-json-file-storage.md, 0003-cli-first-web-readonly.md; AGENTS.md description filled; CONTRIBUTING.md got the Go toolchain + gates (go test/vet, was npm test); ARCHITECTURE.md completed with real layout/invariants; engineering.md testing expectations filled; SECURITY.md contact arggondev@gmail.com (owner-confirmed 2026-09-14) + re-confirm flag.
+4. Archived: backup/2026-09-14/docs/DECISIONS.md (original informal log). README.md not archived (merged in place, per checklist).
+5. Playbooks: docs/playbooks/go.md (v1.27.1) + docs/playbooks/golangci-lint.md (v2.13.2), researched 2026-09-14 with dated sources (go.dev release history, golangci-lint.run changelog).
+6. arggon adopt --ack: 17 docs acked with sha256 checksums.
+7. arggon validate ok:true, spec validate ok:true, playbook status staleCount:0.
+Adopt hierarchy (fix #137 validated live): createdContainers [arggon-adoption, epic-arggon-adoption], storyCreated+taskCreated true.
