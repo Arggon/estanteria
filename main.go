@@ -4,6 +4,7 @@ package main
 import (
 	"flag"
 	"fmt"
+	"net/http"
 	"os"
 	"strings"
 )
@@ -55,6 +56,7 @@ Uso:
   estanteria add <título> [--autor NOMBRE] [--paginas N]
   estanteria list [--status quiero-leer|leyendo|leido]
   estanteria status <libro> [--set quiero-leer|leyendo|leido] [--rating 1-5]
+  estanteria serve [--addr 127.0.0.1:8080]
 
 El libro se busca por id exacto o por prefijo de título (sin distinguir
 mayúsculas ni acentos). El rating solo aplica con --set leido.
@@ -79,6 +81,8 @@ func run(args []string) int {
 		err = cmdList(rest)
 	case "status":
 		err = cmdStatus(rest)
+	case "serve":
+		err = cmdServe(rest)
 	default:
 		err = fmt.Errorf("comando desconocido %q", cmd)
 	}
@@ -87,6 +91,22 @@ func run(args []string) int {
 		return 1
 	}
 	return 0
+}
+
+// cmdServe arranca la vista web de SOLO LECTURA (ADR 0003): bindea a
+// 127.0.0.1 por defecto y recarga el ledger en cada request vía ServeHandler.
+func cmdServe(args []string) error {
+	fs := flag.NewFlagSet("serve", flag.ContinueOnError)
+	addr := fs.String("addr", "127.0.0.1:8080", "dirección de escucha")
+	if partitionArgs(fs, args) != nil {
+		return fmt.Errorf("flags inválidas (mirá estanteria --help)")
+	}
+	path, err := LedgerPath()
+	if err != nil {
+		return err
+	}
+	fmt.Printf("estantería en http://%s (solo lectura, ledger: %s)\n", *addr, path)
+	return http.ListenAndServe(*addr, ServeHandler(path))
 }
 
 func cmdAdd(args []string) error {

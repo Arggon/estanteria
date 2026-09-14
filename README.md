@@ -26,7 +26,14 @@ estanteria status "el al" --set leyendo
 estanteria status "el aleph" --set leido --rating 5
 estanteria list                    # toda la estantería
 estanteria list --status leido     # solo terminados (con sus ratings)
+estanteria serve                   # vista web de SOLO LECTURA en http://127.0.0.1:8080
 ```
+
+`serve` levanta una vista HTML agrupada por status (quiero-leer / leyendo /
+leído) con ratings y estadísticas: es **solo lectura** (ningún endpoint muta
+el ledger, métodos que no sean GET responden 405) y bindea a `127.0.0.1` por
+defecto (`--addr` para cambiarlo). La página se genera en cada request desde
+el ledger, así que siempre muestra el estado actual.
 
 El libro se busca por id exacto o por prefijo de título, sin distinguir
 mayúsculas ni acentos. El rating (1-5) solo aplica al terminar un libro.
@@ -51,6 +58,5 @@ go build -o estanteria .
 
 ## Decisiones
 
-Las decisiones de diseño (informales) están en
-[docs/DECISIONS.md](docs/DECISIONS.md): por qué Go, por qué un JSON file y por
-qué CLI-first.
+Las decisiones de diseño están formalizadas como ADRs en
+[docs/adr/](docs/adr/): por qué Go, por qué un JSON file y por qué CLI-first.
