@@ -3,24 +3,28 @@
 
 ## Supported versions
 
-<!-- Fill in the versions of estanteria that receive security fixes. -->
+estanteria es una herramienta personal de un solo maintainer: solo la última
+versión de `main` recibe fixes.
 
 | Version | Supported |
 | ------- | --------- |
-| <!-- e.g. 1.2.x --> | <!-- :white_check_mark: --> |
-| <!-- e.g. < 1.2 --> | <!-- :x: --> |
+| main (HEAD) | :white_check_mark: |
+| otras | :x: |
 
 ## Reporting a vulnerability
 
-<!-- Fill in a real contact. Do not report vulnerabilities through public GitHub issues. -->
-
-- Contact: <!-- security@yourdomain.example or the private vulnerability reporting URL -->
-- Response target: <!-- e.g. acknowledgement within 3 business days -->
+- Contact: **arggondev@gmail.com** (email confirmado por el dueño del proyecto
+  el 2026-09-14). No reportar vulnerabilidades por GitHub issues públicas.
+  <!-- re-confirmar contacto: si cambia más de 180 días desde la última
+       confirmación (próxima: antes de 2027-03-13), re-confirmar con el dueño
+       y actualizar esta fecha. flag: contact-confirmed=2026-09-14 -->
+- Response target: acknowledgment dentro de 3 días hábiles.
 - Please include: affected version(s), reproduction steps, and impact assessment.
 
 ## Disclosure policy
 
-<!-- Describe your coordinated disclosure expectations, e.g. fixed releases before public detail. -->
+Coordinated disclosure: el fix se publica primero y los detalles técnicos
+recién con el release que lo contiene.
 
 <!--
 Copyright 2026 estanteria contributors

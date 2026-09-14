@@ -7,7 +7,7 @@ How to get help with estanteria.
 
 <!-- Fill in the real channels and delete the rest. -->
 
-- Questions / usage help: <!-- e.g. Discussions tab, Discord, mailing list -->
+- Questions / usage help: GitHub Issues de este repo (proyecto personal, sin canal externo); bugs de seguridad → SECURITY.md
 - Bug reports: this project tracks work in-tree under `tasks/` — see [`docs/tracking.md`](docs/tracking.md). Do not open GitHub issues unless the link above says otherwise.
 - Security issues: follow [`SECURITY.md`](../SECURITY.md) — never report vulnerabilities through public channels.
 

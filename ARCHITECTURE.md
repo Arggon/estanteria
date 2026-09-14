@@ -1,50 +1,72 @@
 <!-- arggon:generated template="ARCHITECTURE.md" -->
 # estanteria — Architecture
 
-<!-- matklad-style skeleton: big picture first, then a code map, then the boundaries.
-     Replace every TODO; delete sections that genuinely do not apply. Keep it current in the
-     same PR that changes the architecture it describes. -->
-
 ## Problem
 
-<!-- What problem does estanteria solve, for whom, and what are the hard constraints?
-     Two or three paragraphs at most. Name the non-goals explicitly. -->
+estanteria es un tracker de lectura personal: registrar lo que uno quiere leer,
+está leyendo y terminó (con rating 1-5 al terminar). Un solo usuario, un solo
+ledger, cero servidores.
 
-TODO: problem statement.
+Restricciones duras:
+
+- El estado debe sobrevivir cortes de luz y crashes: toda escritura es atómica
+  (temp + fsync + rename) y un ledger corrupto falla en vez de resetearse.
+- Sin dependencias de runtime: binario estático de Go, solo stdlib.
+- La web es de solo lectura y opcional; la única forma obligatoria de escribir
+  estado es el CLI.
+
+Non-goals: multiusuario, sincronización entre máquinas, UI de escritura web,
+integración con librerías/APIs externas.
 
 ## Big picture
 
-<!-- How does a request / command / event flow through the system? Name the major moving
-     parts and the direction of dependencies. A small diagram helps. -->
+Flujo representativo — `estanteria status "el aleph" --set leido --rating 5`:
 
-TODO: end-to-end walkthrough of one representative operation.
+1. `main.go` enruta el comando y particiona args (`partitionArgs`: flags
+   admitidas en cualquier posición).
+2. `storage.go` carga el ledger (`LoadShelf`: archivo inexistente = shelf
+   vacío; JSON corrupto = error, nunca se arranca de cero).
+3. `shelf.go` resuelve el libro (`Find`: id exacto, después prefijo de título
+   con folding de mayúsculas/acentos, determinístico ante ambigüedad).
+4. `book.go` aplica la transición (`SetStatus`: rating solo al terminar,
+   `finished` se fija/limpia con el status `leido`).
+5. `storage.go` escribe el ledger completo con `SaveShelf` (atómico).
+
+Dirección de dependencias: `main → shelf → book`, y `main → storage`. El
+dominio (`Shelf`/`Book`) no sabe que el storage es JSON: `Shelf` se
+serializa/deserializa pero toda I/O de archivo vive en `storage.go`.
 
 ## Code map
 
-<!-- "You are here" map of the tree. One bullet per directory: what lives here, what must
-     NOT live here. Update in the same PR that moves code. -->
-
 ```text
 estanteria/
-  tasks/        # TODO: purpose
-  docs/         # TODO: purpose
-  src/          # TODO: purpose
+  main.go        # CLI: enrutamiento add|list|status, partición de flags, output
+  book.go        # dominio: Book, Status, transiciones y reglas de rating
+  shelf.go       # dominio: Shelf (colección), Add/Find/Filter, slug de ids
+  storage.go     # I/O: ubicación del ledger, carga, escritura atómica
+  *_test.go      # tests table-driven + e2e del CLI
+  docs/          # convention/engineering (gobernanza), DECISIONS, FORMAT, adr/, playbooks/, specs/
+  tasks/         # tracker: el árbol de trabajo como Markdown (fuente de verdad)
+  templates/     # plantillas de ítems del tracker (bug/epic/initiative/plan/spec/story/task)
 ```
 
 ## Boundaries and layering rules
 
-<!-- The rules reviewers enforce: allowed dependency directions, module ownership, public
-     API surface, what may import what. Keep the list short and checkable. -->
-
-- TODO: e.g. "the CLI layer may not import storage internals directly".
-- TODO: e.g. "all writes go through <module>".
+- Solo `storage.go` toca el filesystem por el ledger; el dominio es puro.
+- Toda escritura del ledger pasa por `SaveShelf` (atómica). Ningún otro camino
+  de código abre el ledger para escribir.
+- `Book.SetStatus` es el único lugar donde mutan `status`, `rating` y
+  `finished`; el CLI nunca los edita a mano.
+- Los status canónicos son ASCII (`quiero-leer|leyendo|leido`); los acentos
+  solo existen en display y en el folding de búsquedas.
 
 ## Invariants
 
-<!-- Properties that must always hold (never overwrite user data, pure reads, etc.).
-     These usually correspond to dedicated tests. -->
-
-- TODO: invariant → test that guards it.
+- Un corte a mitad de escritura nunca deja un ledger corrupto →
+  `TestSaveShelfIsAtomicNoTempLeftovers` (temp+rename, sin residuos).
+- Ledger corrupto falla ruidoso, no arranca de cero → `TestLoadShelfCorruptJSON`.
+- `add` con id duplicado no muta el shelf → `TestAdd/duplicado`.
+- El rating solo existe en libros `leido` → `TestSetStatus/rating_con_status_leyendo_es_rechazado`.
 
 ---
 

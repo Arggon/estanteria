@@ -6,8 +6,17 @@ Thanks for helping. Work is tracked in-tree under `tasks/` (Markdown work items 
 ## Getting started
 
 1. Read [`AGENTS.md`](AGENTS.md) — the task workflow for humans and agents alike.
-2. Find a claimable item: `arggon list --status todo --json`.
-3. Claim it: `arggon update <id> --status in_progress --assignee <your-login>`. Never steal a claim.
+2. Install the toolchain: Go **1.27.1** (stable al 2026-09-14) — con mise: `mise use go@1.27.1`; no hay dependencias externas (`go.mod` no requiere `go mod download`, pero correrlo no daña).
+3. Find a claimable item: `arggon list --status todo --json`.
+4. Claim it: `arggon update <id> --status in_progress --assignee <your-login>`. Never steal a claim.
+
+## Build, test, gates
+
+```bash
+go test ./...      # suite completa (table-driven + e2e del CLI)
+go vet ./...       # análisis estático — gate obligatorio antes de push
+go build -o estanteria .
+```
 
 ## Branches
 
@@ -30,7 +39,7 @@ One branch per work item, generated from the item id:
 ### PR checklist
 
 - [ ] Linked work item from `tasks/` (or a clear docs-only / chore reason)
-- [ ] Tests pass locally (`npm test` or the project equivalent)
+- [ ] Tests pass locally (`go test ./... && go vet ./...`)
 - [ ] Docs updated in the same PR when behavior changed
 - [ ] PR references the work item id
 
