@@ -1,6 +1,6 @@
 ---
 type: bug
-status: in_progress
+status: done
 id: bug-issue-6
 title: "issue #6: status <libro> --rating N sin --set ignora el rating en silencio"
 assignee: Arggon
@@ -9,7 +9,6 @@ parent: story-imported-issues
 labels: [bug]
 created: "2026-09-14"
 updated: "2026-09-14"
-claimed_at: "2026-09-14T13:49:49.055Z"
 issue: 6
 worktree_path: /home/arggon/Projects/estanteria-bug-issue-6
 ---
@@ -38,8 +37,8 @@ Error explícito: el rating solo aplica con `--set leido` (o aplicar el rating s
 
 ## Criterios de aceptación
 
-- [ ] `status <libro> --rating N` sin `--set` falla con mensaje claro (o aplica el rating a un libro ya leído, decidido y documentado en FORMAT.md)
-- [ ] test table-driven del caso
+- [x] `status <libro> --rating N` sin `--set` falla con mensaje claro (o aplica el rating a un libro ya leído, decidido y documentado en FORMAT.md)
+- [x] test table-driven del caso
 > imported from issue #6
 
 ### 2026-09-14 @Arggon

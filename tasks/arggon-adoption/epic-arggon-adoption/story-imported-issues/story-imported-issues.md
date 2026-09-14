@@ -1,6 +1,6 @@
 ---
 type: story
-status: todo
+status: done
 id: story-imported-issues
 title: Imported GitHub issues
 parent: epic-arggon-adoption
@@ -21,6 +21,6 @@ updated: "2026-09-14"
 
 ## Acceptance
 
-- [ ] 
+- [x] 
 
 ## Notes
