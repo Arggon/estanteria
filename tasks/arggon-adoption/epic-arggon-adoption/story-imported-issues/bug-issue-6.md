@@ -41,3 +41,6 @@ Error explícito: el rating solo aplica con `--set leido` (o aplicar el rating s
 - [ ] `status <libro> --rating N` sin `--set` falla con mensaje claro (o aplica el rating a un libro ya leído, decidido y documentado en FORMAT.md)
 - [ ] test table-driven del caso
 > imported from issue #6
+
+### 2026-09-14 @Arggon
+Fixeado y mergeado en PR #13: --rating sin --set recalifica un libro ya leido (leido->leido) y en cualquier otro status falla con error explicito. FORMAT.md actualizado. Decisión documentada en el PR.
