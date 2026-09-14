@@ -13,8 +13,8 @@ x-worktree:
   post-start: "go mod download"
 
 x-views:
-  app: "parent:estanteria-app"
-  ops: "parent:estanteria-ops"
+  app: "parent:epic-estanteria-app"
+  ops: "parent:epic-estanteria-ops"
 
 x-import:
   label-types:
